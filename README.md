@@ -1,5 +1,11 @@
 # xqgpc
-xqg pc project with angular framework and gulp 
+xqg pc project
+
+Language APIs node
+Frameworks React
+Build systems webpack gulp
+Editors and IDEs webstorm
+other babel 
 
 order:
 
