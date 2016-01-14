@@ -1,7 +1,7 @@
 # xqgpc
 xqg pc project
 
-Language APIs node
+Language APIs node  
 Frameworks React
 Build systems webpack gulp
 Editors and IDEs webstorm
