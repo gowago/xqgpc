@@ -1,0 +1,81 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# monitor
+
+
+## station power [/station/power]
+ 
+### message[POST]
+
+
++ Request  (application/json)
+
+        {
+            "type":"day"
+        }
+
+
++ Response 200 (application/json)
+
+        {   
+            "title":{"text":"日发电量","show":true},
+            "xAxis":["11时","12时","13时","14时","15时","16时"],
+            "title":"总发电量",
+            "series":{
+                        "type":"bar",
+                        "name":"日发电量",
+                        "value":[200,300,400,200,100,300]
+                    }
+                   
+        }
+        
++ Request  (application/json)
+
+        {
+            "type":"total"
+        }
+
+
++ Response 200 (application/json)
+
+        {  
+            "xAxis":["2017/7/20"],
+            "title":"总发电量",
+            "series":{"type":"bar","name":"总发电量","value":[12000]}
+        }
+        
+   
+   
+ 
+ 
+## DateRange [/station/range]
+
+### Date message [GET]
+
++ Response 200 (application/json)
+
+        {
+            "beginDate":"2010-07-01", 
+            "endDate":"2017-07-18"
+        }
+        
+        
+        
+## station power live [/station/power/live]
+
+### live message [POST]
+
++ Request  (application/json)
+
+        {
+            "live":"true"
+        }
+
+
++ Response 200 (application/json)
+
+        {   
+            "xAxis":"17时",
+            "value":200
+        }
