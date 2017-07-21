@@ -4,7 +4,10 @@ HOST: http://polls.apiblueprint.org/
 # monitor
 
 
-## 发电量 [/station/power]
+## 全站发电量 [/station/power]
+    + type:day/month/year/total
+    + beginDate(required:false)
+    + endDate(required:false)
  
 ### message[POST]
 
@@ -13,6 +16,7 @@ HOST: http://polls.apiblueprint.org/
 
         {
             "type":"day"
+            "date":"2016-05-04",
         }
 
 
@@ -28,29 +32,10 @@ HOST: http://polls.apiblueprint.org/
                     }
                    
         }
-        
-+ Request  (application/json)
-
-        {
-            "type":"total"
-        }
-
-
-+ Response 200 (application/json)
-
-        {  
-            "xAxis":["2017/7/20"],
-            "title":"总发电量",
-            "series":{"type":"bar","name":"总发电量","value":[12000]}
-        }
-        
-   
-   
  
- 
-## DateRange [/station/range]
+## 全站日期时间范围 [/station/range]
 
-### Date message [GET]
+###  message [GET]
 
 + Response 200 (application/json)
 
@@ -59,9 +44,11 @@ HOST: http://polls.apiblueprint.org/
             "endDate":"2017-07-18"
         }
         
+
+
         
         
-## 实时发电量 [/station/power/live]
+## 站点电流 [/station/power/live]
 
 ### live message [POST]
 
