@@ -5,17 +5,21 @@ HOST: http://polls.apiblueprint.org/
 
 
 ## 全站发电量 [/station/power]
+
++ RequestParams:
     + type:day/month/year/total
     + Date(required:true)
++ ResponseParams:
+    + series.type:(bar:柱状图,line:折线图)
   
  
-### message[POST]
+### history message[POST]
 
 
 + Request  (application/json)
 
         {
-            "type":"day"
+            "dateType":"day"
             "date":"2016-05-04",
         }
 
@@ -48,7 +52,53 @@ HOST: http://polls.apiblueprint.org/
 
         
         
-## 站点电流 [/station/power/live]
+## 单个站点所有图表信息 [/eachStation/]
+### history message [GET]
+
++ Request  (application/json)
+
+        {
+            "stationId":"123",
+            "date":"2017-06-14",
+            "dateType":"month"
+        }
+
+
++ Response 200 (application/json)
+
+        [
+            {   
+                "title":{"text":"发电量","show":true},
+                "xAxis":["11时","12时","13时","14时","15时","16时"],
+                "series":{
+                            "type":"bar",
+                            "name":"日发电量",
+                            "value":[200,300,400,200,100,300]
+                        }
+                   
+            },
+             {   
+                "title":{"text":"电流","show":true},
+                "xAxis":["11时","12时","13时","14时","15时","16时"],
+                "series":{
+                            "type":"bar",
+                            "name":"日发电量",
+                            "value":[200,300,400,200,100,300]
+                        }
+                   
+            },
+             {   
+                "title":{"text":"电压","show":true},
+                "xAxis":["11时","12时","13时","14时","15时","16时"],
+                "series":{
+                            "type":"line",
+                            "name":"日发电量",
+                            "value":[200,300,400,200,100,300]
+                        }
+                   
+            }
+        ]
+
 
 ### live message [POST]
 
