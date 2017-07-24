@@ -6,13 +6,8 @@ HOST: http://polls.apiblueprint.org/
 
 ## 全站发电量 [/station/power]
 
-+ dddRequestParams:
-    + type:day/month/year/total;
-    + Date(required:true);
-+ ResponseParams:
-    + series.type:(bar:柱状图,line:折线图)
-  
- 
+
+
 ### history message[POST]
 
 + Request  (application/json)
@@ -51,9 +46,7 @@ HOST: http://polls.apiblueprint.org/
         
 
 
-        
-        
-## 单个站点所有图表信息 [/eachStation/]
+## 单个站点历史图表信息 [/eachStation/]
 
 ### history message [POST]
 
@@ -104,8 +97,9 @@ HOST: http://polls.apiblueprint.org/
             }
         ]
         
+
         
-## 单个站点所有图表信息 [/eachStation/live]
+## 单个站点实时图表信息 [/eachStation/live]
 
 ### 实时数据配置 [GET] 加载配置
 
@@ -141,7 +135,6 @@ HOST: http://polls.apiblueprint.org/
             }
         ] 
         
-
 ### 实时数据-polling [POST] 更新数据
 
 + Request  (application/json)
