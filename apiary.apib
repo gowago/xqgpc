@@ -6,9 +6,9 @@ HOST: http://polls.apiblueprint.org/
 
 ## 全站发电量 [/station/power]
 
-+ RequestParams:
-    + type:day/month/year/total
-    + Date(required:true)
++ dddRequestParams:
+    + type:day/month/year/total;
+    + Date(required:true);
 + ResponseParams:
     + series.type:(bar:柱状图,line:折线图)
   
@@ -35,6 +35,8 @@ HOST: http://polls.apiblueprint.org/
                     }
                    
         }
+        
+
  
 ## 全站日期时间范围 [/station/range]
 
@@ -53,12 +55,12 @@ HOST: http://polls.apiblueprint.org/
         
 ## 单个站点所有图表信息 [/eachStation/]
 
-### history message [GET]
+### history message [POST]
 
 + Request  (application/json)
 
         {
-            "stationId":"123",
+            "stationId":123,
             "date":"2017-06-14",
             "dateType":"month"
         }
@@ -68,6 +70,7 @@ HOST: http://polls.apiblueprint.org/
 
         [
             {   
+                "id":1,
                 "title":{"text":"发电量kw/h","show":true},
                 "xAxis":["11时","12时","13时","14时","15时","16时"],
                 "series":{
@@ -78,40 +81,81 @@ HOST: http://polls.apiblueprint.org/
                    
             },
              {   
+                "id":2,
                 "title":{"text":"电流/A","show":true},
                 "xAxis":["11时","12时","13时","14时","15时","16时"],
                 "series":{
                             "type":"bar",
-                            "name":"日发电量",
+                            "name":"电流",
                             "value":[200,300,400,200,100,300]
                         }
                    
             },
              {   
+                "id":3,
                 "title":{"text":"电压/V","show":true},
                 "xAxis":["11时","12时","13时","14时","15时","16时"],
                 "series":{
-                            "type":"line",
-                            "name":"日发电量",
+                            "type":"bar",
+                            "name":"电压",
                             "value":[200,300,400,200,100,300]
                         }
                    
             }
         ]
+        
+        
+## 单个站点所有图表信息 [/eachStation/live]
 
-
-### live message [POST]
+### live message config [GET]
 
 + Request  (application/json)
 
         {
+            "stationid":123
             "live":"true"
         }
 
 
 + Response 200 (application/json)
 
-        {   
-            "xAxis":"17时",
-            "value":200
+        [
+            {   
+                "id":1,
+                "title":{"text":"电压/V","show":true},
+                "series":{"type":"line","name":"电压"}
+            },
+             {   
+                "id":2,
+                "title":{"text":"电流/A","show":true},
+                "series":{"type":"line","name":"电流"}
+                        
+                   
+            },
+            {   
+                "id":3,
+                "title":{"text":"发电量kw/h","show":true},
+                "series":{"type":"bar","name":"发电量"}
+                        
+                   
+            }
+        ] 
+        
+
+### live message [POST]
+
++ Request  (application/json)
+
+        {
+            "stationid":123
+            "live":"true"
         }
+
+
++ Response 200 (application/json)
+
+        [
+            {"id":1,"xAxis":"17分","value":200},
+            {"id":2,"xAxis":"17分","value":300},
+            {"id":3,"xAxis":"17分","value":400}
+        ]
