@@ -3,7 +3,56 @@ HOST: http://polls.apiblueprint.org/
 
 # monitor
 
+## 单个站点实时图表信息 [/eachStation/live]
 
+### 实时数据配置 [GET] 
+
++ Request  (application/json)
+
+        {
+            "stationid":123
+            "live":"true"
+        }
+
+
++ Response 200 (application/json)
+
+        [
+            {   
+                "id":1,
+                "title":{"text":"电流","show":true},
+                "series":{"type":"line","name":"电压"}
+            },
+            {   
+                "id":3,
+                "legend":{"data":["电压","电流","有功功率"]},
+                "title":{"text":"有功","show":true},
+                "series":[
+                            {"type":"line","name":"电压","id":1},
+                            {"type":"line","name":"电流","id":2},
+                            {"type":"line","name":"有功功率","id":3}
+                       ]
+            }
+        ] 
+        
+### 实时数据-polling [POST] 
+
++ Request  (application/json)
+
+        {
+            "stationid":123
+            "live":"true"
+        }
+
+
++ Response 200 (application/json)
+
+        [
+            {"id":1,"xAxis":"17分","value":200},
+            {"id":2,"xAxis":"17分","value":300},
+            {"id":3,"xAxis":"17分","value":[{"id":1,"value":200},{"id":2,"value":100},{"id":3,"value":300}]}
+        ]
+        
 ## 全站发电量 [/station/power]
 
         + dddRequestParams:
@@ -45,7 +94,10 @@ HOST: http://polls.apiblueprint.org/
 
         {
             "beginDate":"2010-07-01", 
-            "endDate":"2017-07-18"
+            "endDate":"2017-07-18",
+            "day":["07-25","07-24","07-23","07-22","07-21","07-20"],
+            "month":["2017-07","2017-06","2017-05","2017-04","2017-03","2017-02"],
+            "year":["2017","2016","2015","2014","2013","2012"]
         }
         
 
@@ -99,60 +151,4 @@ HOST: http://polls.apiblueprint.org/
                         }
                    
             }
-        ]
-        
-
-        
-## 单个站点实时图表信息 [/eachStation/live]
-
-### 实时数据配置 [GET] 加载配置
-
-+ Request  (application/json)
-
-        {
-            "stationid":123
-            "live":"true"
-        }
-
-
-+ Response 200 (application/json)
-
-        [
-            {   
-                "id":1,
-                "title":{"text":"电压/V","show":true},
-                "series":{"type":"line","name":"电压"}
-            },
-             {   
-                "id":2,
-                "title":{"text":"电流/A","show":true},
-                "series":{"type":"line","name":"电流"}
-                        
-                   
-            },
-            {   
-                "id":3,
-                "title":{"text":"发电量kw/h","show":true},
-                "series":{"type":"bar","name":"发电量"}
-                        
-                   
-            }
-        ] 
-        
-### 实时数据-polling [POST] 更新数据
-
-+ Request  (application/json)
-
-        {
-            "stationid":123
-            "live":"true"
-        }
-
-
-+ Response 200 (application/json)
-
-        [
-            {"id":1,"xAxis":"17分","value":200},
-            {"id":2,"xAxis":"17分","value":300},
-            {"id":3,"xAxis":"17分","value":400}
         ]
