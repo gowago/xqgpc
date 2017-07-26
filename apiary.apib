@@ -55,11 +55,11 @@ HOST: http://polls.apiblueprint.org/
         
 ## 全站发电量 [/station/power]
 
-        + dddRequestParams:
-            + type:day/month/year/total;
-            + Date(required:true);
-        + ResponseParams:
-            + series.type:(bar:柱状图,line:折线图)
++ RequestParams:
+    + type:day/month/year/total;
+    + Date(required:true);
++ ResponseParams:
+    + series.type:(bar:柱状图,line:折线图)
     
 ### history message[POST]
 
