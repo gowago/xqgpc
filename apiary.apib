@@ -74,7 +74,7 @@ HOST: http://polls.apiblueprint.org/
 + Response 200 (application/json)
 
         {   
-            "title":{"text":"总发电量","show":true},
+            "title":{"text":"总发电量kW·h","show":true},
             "xAxis":["11时","12时","13时","14时","15时","16时"],
             "series":{
                         "type":"bar",
@@ -95,7 +95,7 @@ HOST: http://polls.apiblueprint.org/
         {
             "beginDate":"2010-07-01", 
             "endDate":"2017-07-18",
-            "day":["07-25","07-24","07-23","07-22","07-21","07-20"],
+            "day":["2017-7-29","2017-7-28","2017-7-27","2017-7-26","2017-7-25","2017-7-24","2017-7-23","2017-7-22"],
             "month":["2017-07","2017-06","2017-05","2017-04","2017-03","2017-02"],
             "year":["2017","2016","2015","2014","2013","2012"]
         }
@@ -120,7 +120,7 @@ HOST: http://polls.apiblueprint.org/
         [
             {   
                 "id":1,
-                "title":{"text":"发电量kw/h","show":true},
+                "title":{"text":"发电量kW·h","show":true},
                 "xAxis":["11时","12时","13时","14时","15时","16时"],
                 "series":{
                             "type":"bar",
@@ -134,7 +134,7 @@ HOST: http://polls.apiblueprint.org/
                 "title":{"text":"电流/A","show":true},
                 "xAxis":["11时","12时","13时","14时","15时","16时"],
                 "series":{
-                            "type":"bar",
+                            "type":"line",
                             "name":"电流",
                             "value":[200,300,400,200,100,300]
                         }
@@ -145,7 +145,7 @@ HOST: http://polls.apiblueprint.org/
                 "title":{"text":"电压/V","show":true},
                 "xAxis":["11时","12时","13时","14时","15时","16时"],
                 "series":{
-                            "type":"bar",
+                            "type":"line",
                             "name":"电压",
                             "value":[200,300,400,200,100,300]
                         }
